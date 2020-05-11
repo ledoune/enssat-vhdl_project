@@ -42,6 +42,8 @@
 /*
 !DAC_restored
 !work
+!LICENSE
+!README.md
 !/*.gitignore
 ##
 !**/*.qpf
