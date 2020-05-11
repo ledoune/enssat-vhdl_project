@@ -207,7 +207,7 @@ GND                          : AE18      : gnd    :                   :         
 RESERVED_INPUT               : AE19      :        :                   :         : 4A        :                
 RESERVED_INPUT               : AE20      :        :                   :         : 4A        :                
 VCCIO4A                      : AE21      : power  :                   : 3.3V    : 4A        :                
-fin_trait                    : AE22      : output : 3.3-V LVTTL       :         : 4A        : Y              
+RESERVED_INPUT               : AE22      :        :                   :         : 4A        :                
 RESERVED_INPUT               : AE23      :        :                   :         : 4A        :                
 RESERVED_INPUT               : AE24      :        :                   :         : 4A        :                
 RESERVED_INPUT               : AE25      :        :                   :         : 5A        :                
@@ -261,7 +261,7 @@ RESERVED_INPUT               : AG16      :        :                   :         
 GND                          : AG17      : gnd    :                   :         :           :                
 RESERVED_INPUT               : AG18      :        :                   :         : 4A        :                
 RESERVED_INPUT               : AG19      :        :                   :         : 4A        :                
-start_trait                  : AG20      : output : 3.3-V LVTTL       :         : 4A        : Y              
+RESERVED_INPUT               : AG20      :        :                   :         : 4A        :                
 RESERVED_INPUT               : AG21      :        :                   :         : 4A        :                
 VCCIO4A                      : AG22      : power  :                   : 3.3V    : 4A        :                
 RESERVED_INPUT               : AG23      :        :                   :         : 4A        :                
@@ -284,7 +284,7 @@ RESERVED_INPUT               : AH12      :        :                   :         
 RESERVED_INPUT               : AH13      :        :                   :         : 4A        :                
 RESERVED_INPUT               : AH14      :        :                   :         : 4A        :                
 VCCIO4A                      : AH15      : power  :                   : 3.3V    : 4A        :                
-button_acq                   : AH16      : input  : 3.3-V LVTTL       :         : 4A        : Y              
+RESERVED_INPUT               : AH16      :        :                   :         : 4A        :                
 button_rst                   : AH17      : input  : 3.3-V LVTTL       :         : 4A        : Y              
 RESERVED_INPUT               : AH18      :        :                   :         : 4A        :                
 RESERVED_INPUT               : AH19      :        :                   :         : 4A        :                
@@ -687,7 +687,7 @@ GND                          : V8        : gnd    :                   :         
 GND                          : V9        : gnd    :                   :         :           :                
 ADC_SCK                      : V10       : output : 3.3-V LVTTL       :         : 3A        : Y              
 RESERVED_INPUT               : V11       :        :                   :         : 3B        :                
-RESERVED_INPUT               : V12       :        :                   :         : 3B        :                
+button_acq                   : V12       : input  : 3.3-V LVTTL       :         : 3B        : Y              
 RESERVED_INPUT               : V13       :        :                   :         : 4A        :                
 GND                          : V14       : gnd    :                   :         :           :                
 led_out_cnt_write            : V15       : output : 3.3-V LVTTL       :         : 5A        : Y              

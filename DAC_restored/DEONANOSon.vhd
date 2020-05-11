@@ -27,8 +27,8 @@ entity de0nanoson is
 		ECHANTE         : out std_logic;        -- impulsion = start la conversion entrée pour observation
 		ECHANTS         : out std_logic;        -- impulsion = start la conversion en sortie pour observation
 		measure_done    : out std_logic;        -- indique si la conversion est finie
-		start_trait     : out std_logic;        -- pour observation
-		fin_trait       : out std_logic;        -- pour observation
+--		start_trait     : out std_logic;        -- pour observation
+--		fin_trait       : out std_logic;        -- pour observation
 		button_rst      : in std_logic;         -- active low reset
 		SCL             : inout std_logic;      -- bus I2C vers CNA
 		SDA             : inout std_logic;      -- bus I2C vers CNA
@@ -113,34 +113,26 @@ begin
 
     instance_ADC2 : ADC2 port map (button_rst,clk,"000",smeasure_done,sdataADC,ADC_CONVST,ADC_SCK,ADC_SDI,ADC_SDO,ECHANTE);
 
-   -- simple registre de connexion
---    process (clk, button_rst, button_acq, button_trt, button_res)
+    -- debug thingy : turns on a led if button_rst goes to 0 due to another button
+--    process (button_res, button_acq, button_rst) 
 --        variable pressed : std_logic;
---        variable stage : std_logic;
 --    begin
 --        if (button_res = '0') then
 --            pressed := '0';
---            stage := '0';
 --            led_acq_cnt_read <= '0'; led_acq_cnt_write <= '0'; led_out_cnt_read <= '0'; led_out_cnt_write <= '0';
+--        end if;
+--        if (button_acq = '0') then
+--            led_out_cnt_write <= '1';
+--            pressed := '1';
+--        else 
+--            led_out_cnt_write <= '0';
 --        end if;
 --        if (button_rst = '0' and pressed = '1') then
 --            led_acq_cnt_read <= '1';
 --        elsif (button_rst = '0') then
---            pressed := '0';
---            stage := '1';
---            led_acq_cnt_read <= '0'; led_acq_cnt_write <= '0'; led_out_cnt_read <= '0'; led_out_cnt_write <= '0';
---        end if;
---        if (button_acq = '0' and stage = '1') then
---            pressed := '1';
 --            led_acq_cnt_write <= '1';
 --        else
 --            led_acq_cnt_write <= '0';
---        end if;
---    	if (rising_edge(clk)) then
---    		if (smeasure_done='1') then
---                sdataDAC <= sdataADC;
---    		end if;
---            -- led_acq_cnt_read <= '0'; led_acq_cnt_write <= '0'; led_out_cnt_read <= '0'; led_out_cnt_write <= '0';
 --        end if;
 --    end process;
 
@@ -162,7 +154,7 @@ begin
 --    SCLcopie <= SCL;
 --    SDAcopie <= SDA;
     ECHANTS <= smeasure_done;
-    start_trait <= '1';
-    fin_trait <= '1';
+--    start_trait <= '1';
+--    fin_trait <= '1';
 
 end structurelle ;

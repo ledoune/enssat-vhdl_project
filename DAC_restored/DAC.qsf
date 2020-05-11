@@ -74,8 +74,8 @@ set_location_assignment PIN_AD4 -to ADC_SDO
 set_location_assignment PIN_AH27 -to measure_done
 set_location_assignment PIN_AG28 -to ECHANTE
 set_location_assignment PIN_AH24 -to ECHANTS
-set_location_assignment PIN_AE22 -to fin_trait
-set_location_assignment PIN_AG20 -to start_trait
+set_location_assignment PIN_AE22 -to fin_trait -disable
+set_location_assignment PIN_AG20 -to start_trait -disable
 set_global_assignment -name EDA_TEST_BENCH_NAME tb_ram_sync -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_ram_sync
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "10 ms" -section_id tb_ram_sync
@@ -90,9 +90,9 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_SDO
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to measure_done
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ECHANTE
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ECHANTS
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to start_trait
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to fin_trait
-set_location_assignment PIN_AH16 -to button_acq
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to start_trait -disable
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to fin_trait -disable
+set_location_assignment PIN_V12 -to button_acq
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to button_acq
 set_global_assignment -name EDA_TEST_BENCH_NAME tb_control_unit -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_control_unit
@@ -142,8 +142,8 @@ set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "600 ns" -section_id tb_d
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_deonanoson -section_id tb_deonanoson
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to button_res
 set_location_assignment PIN_Y8 -to button_res
-set_instance_assignment -name CURRENT_STRENGTH_NEW 16MA -to start_trait
-set_instance_assignment -name SLEW_RATE 1 -to start_trait
+set_instance_assignment -name CURRENT_STRENGTH_NEW 16MA -to start_trait -disable
+set_instance_assignment -name SLEW_RATE 1 -to start_trait -disable
 set_instance_assignment -name SLEW_RATE 1 -to ADC_CONVST
 set_instance_assignment -name CURRENT_STRENGTH_NEW 16MA -to ADC_CONVST
 set_instance_assignment -name CURRENT_STRENGTH_NEW 16MA -to ADC_SCK
@@ -156,8 +156,8 @@ set_instance_assignment -name CURRENT_STRENGTH_NEW 16MA -to ECHANTS
 set_instance_assignment -name SLEW_RATE 1 -to ECHANTS
 set_instance_assignment -name CURRENT_STRENGTH_NEW 16MA -to measure_done
 set_instance_assignment -name SLEW_RATE 1 -to measure_done
-set_instance_assignment -name CURRENT_STRENGTH_NEW 16MA -to fin_trait
-set_instance_assignment -name SLEW_RATE 1 -to fin_trait
+set_instance_assignment -name CURRENT_STRENGTH_NEW 16MA -to fin_trait -disable
+set_instance_assignment -name SLEW_RATE 1 -to fin_trait -disable
 set_instance_assignment -name CURRENT_STRENGTH_NEW 16MA -to led_acq_cnt_read
 set_instance_assignment -name CURRENT_STRENGTH_NEW 16MA -to led_acq_cnt_write
 set_instance_assignment -name CURRENT_STRENGTH_NEW 16MA -to led_out_cnt_read

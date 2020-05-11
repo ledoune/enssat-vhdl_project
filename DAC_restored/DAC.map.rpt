@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DAC
-Sun May 10 00:52:29 2020
+Mon May 11 15:54:12 2020
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -70,14 +70,14 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun May 10 00:52:29 2020       ;
+; Analysis & Synthesis Status     ; Successful - Mon May 11 15:54:12 2020       ;
 ; Quartus Prime Version           ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                   ; DAC                                         ;
 ; Top-level Entity Name           ; de0nanoson                                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 198                                         ;
-; Total pins                      ; 20                                          ;
+; Total registers                 ; 195                                         ;
+; Total pins                      ; 18                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 1,572,864                                   ;
 ; Total DSP Blocks                ; 0                                           ;
@@ -236,27 +236,27 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimate of Logic utilization (ALMs needed) ; 228       ;
+; Estimate of Logic utilization (ALMs needed) ; 231       ;
 ;                                             ;           ;
-; Combinational ALUT usage for logic          ; 349       ;
+; Combinational ALUT usage for logic          ; 344       ;
 ;     -- 7 input functions                    ; 1         ;
-;     -- 6 input functions                    ; 102       ;
-;     -- 5 input functions                    ; 26        ;
-;     -- 4 input functions                    ; 47        ;
-;     -- <=3 input functions                  ; 173       ;
+;     -- 6 input functions                    ; 112       ;
+;     -- 5 input functions                    ; 31        ;
+;     -- 4 input functions                    ; 26        ;
+;     -- <=3 input functions                  ; 174       ;
 ;                                             ;           ;
-; Dedicated logic registers                   ; 198       ;
+; Dedicated logic registers                   ; 195       ;
 ;                                             ;           ;
-; I/O pins                                    ; 20        ;
+; I/O pins                                    ; 18        ;
 ; Total MLAB memory bits                      ; 0         ;
 ; Total block memory bits                     ; 1572864   ;
 ;                                             ;           ;
 ; Total DSP Blocks                            ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 377       ;
-; Total fan-out                               ; 7637      ;
-; Average fan-out                             ; 9.78      ;
+; Maximum fan-out                             ; 374       ;
+; Total fan-out                               ; 7629      ;
+; Average fan-out                             ; 9.92      ;
 +---------------------------------------------+-----------+
 
 
@@ -265,13 +265,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                            ; Entity Name     ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |de0nanoson                                  ; 349 (0)             ; 198 (0)                   ; 1572864           ; 0          ; 20   ; 0            ; |de0nanoson                                                                                                                    ; de0nanoson      ; work         ;
+; |de0nanoson                                  ; 344 (0)             ; 195 (0)                   ; 1572864           ; 0          ; 18   ; 0            ; |de0nanoson                                                                                                                    ; de0nanoson      ; work         ;
 ;    |ADC2:instance_ADC2|                      ; 35 (35)             ; 35 (35)                   ; 0                 ; 0          ; 0    ; 0            ; |de0nanoson|ADC2:instance_ADC2                                                                                                 ; ADC2            ; work         ;
 ;    |DAC:instance_DAC|                        ; 54 (54)             ; 35 (35)                   ; 0                 ; 0          ; 0    ; 0            ; |de0nanoson|DAC:instance_DAC                                                                                                   ; DAC             ; work         ;
-;    |block_v1:instance_block_v1|              ; 260 (23)            ; 128 (13)                  ; 1572864           ; 0          ; 0    ; 0            ; |de0nanoson|block_v1:instance_block_v1                                                                                         ; block_v1        ; work         ;
-;       |control_unit:ctr_unit|                ; 25 (25)             ; 22 (22)                   ; 0                 ; 0          ; 0    ; 0            ; |de0nanoson|block_v1:instance_block_v1|control_unit:ctr_unit                                                                   ; control_unit    ; work         ;
-;       |counter:acq_cnt_read|                 ; 43 (43)             ; 29 (29)                   ; 0                 ; 0          ; 0    ; 0            ; |de0nanoson|block_v1:instance_block_v1|counter:acq_cnt_read                                                                    ; counter         ; work         ;
-;       |counter:acq_cnt_write|                ; 39 (39)             ; 29 (29)                   ; 0                 ; 0          ; 0    ; 0            ; |de0nanoson|block_v1:instance_block_v1|counter:acq_cnt_write                                                                   ; counter         ; work         ;
+;    |block_v1:instance_block_v1|              ; 255 (23)            ; 125 (13)                  ; 1572864           ; 0          ; 0    ; 0            ; |de0nanoson|block_v1:instance_block_v1                                                                                         ; block_v1        ; work         ;
+;       |control_unit:ctr_unit|                ; 23 (23)             ; 19 (19)                   ; 0                 ; 0          ; 0    ; 0            ; |de0nanoson|block_v1:instance_block_v1|control_unit:ctr_unit                                                                   ; control_unit    ; work         ;
+;       |counter:acq_cnt_read|                 ; 41 (41)             ; 29 (29)                   ; 0                 ; 0          ; 0    ; 0            ; |de0nanoson|block_v1:instance_block_v1|counter:acq_cnt_read                                                                    ; counter         ; work         ;
+;       |counter:acq_cnt_write|                ; 38 (38)             ; 29 (29)                   ; 0                 ; 0          ; 0    ; 0            ; |de0nanoson|block_v1:instance_block_v1|counter:acq_cnt_write                                                                   ; counter         ; work         ;
 ;       |counter:out_cnt_read|                 ; 42 (42)             ; 29 (29)                   ; 0                 ; 0          ; 0    ; 0            ; |de0nanoson|block_v1:instance_block_v1|counter:out_cnt_read                                                                    ; counter         ; work         ;
 ;       |ram_sync:acq_ram|                     ; 44 (0)              ; 3 (0)                     ; 786432            ; 0          ; 0    ; 0            ; |de0nanoson|block_v1:instance_block_v1|ram_sync:acq_ram                                                                        ; ram_sync        ; work         ;
 ;          |altsyncram:ram_rtl_0|              ; 44 (0)              ; 3 (0)                     ; 786432            ; 0          ; 0    ; 0            ; |de0nanoson|block_v1:instance_block_v1|ram_sync:acq_ram|altsyncram:ram_rtl_0                                                   ; altsyncram      ; work         ;
@@ -316,19 +316,19 @@ Encoding Type:  One-Hot
 +-----------------------+-----------------------+------------+----------------+-----------+----------------+-----------+----------------+---------------+-------------+-------------+
 
 
-Encoding Type: Safe One-Hot
-+-----------------------------------------------------------------------------------------------+
-; State Machine - |de0nanoson|block_v1:instance_block_v1|control_unit:ctr_unit|state            ;
-+-----------------+-----------+-----------+-----------+-----------+-----------+-----------------+
-; Name            ; state.rdy ; state.rst ; state.res ; state.trt ; state.acq ; state.async_rst ;
-+-----------------+-----------+-----------+-----------+-----------+-----------+-----------------+
-; state.async_rst ; 0         ; 0         ; 0         ; 0         ; 0         ; 0               ;
-; state.acq       ; 0         ; 0         ; 0         ; 0         ; 1         ; 1               ;
-; state.trt       ; 0         ; 0         ; 0         ; 1         ; 0         ; 1               ;
-; state.res       ; 0         ; 0         ; 1         ; 0         ; 0         ; 1               ;
-; state.rst       ; 0         ; 1         ; 0         ; 0         ; 0         ; 1               ;
-; state.rdy       ; 1         ; 0         ; 0         ; 0         ; 0         ; 1               ;
-+-----------------+-----------+-----------+-----------+-----------+-----------+-----------------+
+Encoding Type: Safe Sequential Encoding
++------------------------------------------------------------------------------------+
+; State Machine - |de0nanoson|block_v1:instance_block_v1|control_unit:ctr_unit|state ;
++-----------------+-------------------+-------------------+--------------------------+
+; Name            ; state.state_bit_2 ; state.state_bit_1 ; state.state_bit_0        ;
++-----------------+-------------------+-------------------+--------------------------+
+; state.async_rst ; 0                 ; 0                 ; 0                        ;
+; state.acq       ; 0                 ; 1                 ; 0                        ;
+; state.trt       ; 0                 ; 0                 ; 1                        ;
+; state.res       ; 0                 ; 1                 ; 1                        ;
+; state.rst       ; 1                 ; 0                 ; 0                        ;
+; state.rdy       ; 1                 ; 1                 ; 0                        ;
++-----------------+-------------------+-------------------+--------------------------+
 
 
 Encoding Type:  One-Hot
@@ -345,19 +345,16 @@ Encoding Type:  One-Hot
 +---------------------------+---------------------------+--------------------+--------------------+---------------------+------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Registers Protected by Synthesis                                                                                                                                                 ;
-+------------------------------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
-; Register Name                                                    ; Protected by Synthesis Attribute or Preserve Register Assignment ; Not to be Touched by Netlist Optimizations ;
-+------------------------------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
-; block_v1:instance_block_v1|control_unit:ctr_unit|state.trt       ; no                                                               ; yes                                        ;
-; block_v1:instance_block_v1|control_unit:ctr_unit|state.acq       ; no                                                               ; yes                                        ;
-; block_v1:instance_block_v1|control_unit:ctr_unit|state.res       ; no                                                               ; yes                                        ;
-; block_v1:instance_block_v1|control_unit:ctr_unit|state.rdy       ; no                                                               ; yes                                        ;
-; block_v1:instance_block_v1|control_unit:ctr_unit|state.async_rst ; no                                                               ; yes                                        ;
-; block_v1:instance_block_v1|control_unit:ctr_unit|state.rst       ; no                                                               ; yes                                        ;
-; Total number of protected registers is 6                         ;                                                                  ;                                            ;
-+------------------------------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Protected by Synthesis                                                                                                                                                   ;
++--------------------------------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
+; Register Name                                                      ; Protected by Synthesis Attribute or Preserve Register Assignment ; Not to be Touched by Netlist Optimizations ;
++--------------------------------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
+; block_v1:instance_block_v1|control_unit:ctr_unit|state.state_bit_0 ; no                                                               ; yes                                        ;
+; block_v1:instance_block_v1|control_unit:ctr_unit|state.state_bit_1 ; no                                                               ; yes                                        ;
+; block_v1:instance_block_v1|control_unit:ctr_unit|state.state_bit_2 ; no                                                               ; yes                                        ;
+; Total number of protected registers is 3                           ;                                                                  ;                                            ;
++--------------------------------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -403,8 +400,10 @@ Encoding Type:  One-Hot
 ; block_v1:instance_block_v1|control_unit:ctr_unit|s_sample_start[0]     ; Stuck at GND due to stuck port data_in                                         ;
 ; ADC2:instance_ADC2|reg_cmd[0]                                          ; Stuck at GND due to stuck port data_in                                         ;
 ; DAC:instance_DAC|addr_rw[6]                                            ; Stuck at VCC due to stuck port data_in                                         ;
+; block_v1:instance_block_v1|control_unit:ctr_unit|state~4               ; Lost fanout                                                                    ;
+; block_v1:instance_block_v1|control_unit:ctr_unit|state~6               ; Lost fanout                                                                    ;
 ; DAC:instance_DAC|state.attente_fin_ena                                 ; Stuck at GND due to stuck port data_in                                         ;
-; Total Number of Removed Registers = 60                                 ;                                                                                ;
+; Total Number of Removed Registers = 62                                 ;                                                                                ;
 +------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 
 
@@ -413,10 +412,10 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 198   ;
+; Total registers                              ; 195   ;
 ; Number of registers using Synchronous Clear  ; 100   ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 103   ;
+; Number of registers using Asynchronous Clear ; 100   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 127   ;
 ; Number of registers using Preset             ; 0     ;
@@ -465,11 +464,12 @@ Encoding Type:  One-Hot
 
 +-------------------------------------------------------------------------+
 ; Source assignments for block_v1:instance_block_v1|control_unit:ctr_unit ;
-+--------------------+-------+------+-------------------------------------+
-; Assignment         ; Value ; From ; To                                  ;
-+--------------------+-------+------+-------------------------------------+
-; SAFE_STATE_MACHINE ; on    ; -    ; state                               ;
-+--------------------+-------+------+-------------------------------------+
++--------------------------+------------+------+--------------------------+
+; Assignment               ; Value      ; From ; To                       ;
++--------------------------+------------+------+--------------------------+
+; SAFE_STATE_MACHINE       ; on         ; -    ; state                    ;
+; STATE_MACHINE_PROCESSING ; SEQUENTIAL ; -    ; state                    ;
++--------------------------+------------+------+--------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------+
@@ -781,32 +781,31 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 198                         ;
-;     CLR               ; 52                          ;
+; arriav_ff             ; 195                         ;
+;     CLR               ; 49                          ;
 ;     CLR SCLR          ; 13                          ;
 ;     ENA               ; 2                           ;
 ;     ENA CLR           ; 38                          ;
 ;     ENA SCLR          ; 87                          ;
 ;     plain             ; 6                           ;
 ; arriav_io_obuf        ; 2                           ;
-; arriav_lcell_comb     ; 350                         ;
+; arriav_lcell_comb     ; 344                         ;
 ;     arith             ; 114                         ;
 ;         1 data inputs ; 114                         ;
 ;     extend            ; 1                           ;
 ;         7 data inputs ; 1                           ;
-;     normal            ; 235                         ;
-;         0 data inputs ; 1                           ;
+;     normal            ; 229                         ;
 ;         1 data inputs ; 3                           ;
-;         2 data inputs ; 18                          ;
+;         2 data inputs ; 19                          ;
 ;         3 data inputs ; 38                          ;
-;         4 data inputs ; 47                          ;
-;         5 data inputs ; 26                          ;
-;         6 data inputs ; 102                         ;
-; boundary_port         ; 20                          ;
+;         4 data inputs ; 26                          ;
+;         5 data inputs ; 31                          ;
+;         6 data inputs ; 112                         ;
+; boundary_port         ; 18                          ;
 ; stratixv_ram_block    ; 192                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.10                        ;
-; Average LUT depth     ; 2.48                        ;
+; Average LUT depth     ; 2.49                        ;
 +-----------------------+-----------------------------+
 
 
@@ -825,7 +824,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Sun May 10 00:52:23 2020
+    Info: Processing started: Mon May 11 15:54:06 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DAC -c DAC
 Info (20032): Parallel compilation is enabled and will use up to 16 processors
 Info (12021): Found 2 design units, including 1 entities, in source file control_unit.vhd
@@ -856,11 +855,11 @@ Info (12021): Found 2 design units, including 1 entities, in source file ADC2.vh
     Info (12023): Found entity 1: ADC2 File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/ADC2.vhd Line: 12
 Info (12127): Elaborating entity "de0nanoson" for the top level hierarchy
 Info (12128): Elaborating entity "ADC2" for hierarchy "ADC2:instance_ADC2" File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/DEONANOSon.vhd Line: 114
-Info (12128): Elaborating entity "block_v1" for hierarchy "block_v1:instance_block_v1" File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/DEONANOSon.vhd Line: 147
+Info (12128): Elaborating entity "block_v1" for hierarchy "block_v1:instance_block_v1" File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/DEONANOSon.vhd Line: 139
 Info (12128): Elaborating entity "ram_sync" for hierarchy "block_v1:instance_block_v1|ram_sync:acq_ram" File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/block_v1.vhd Line: 117
 Info (12128): Elaborating entity "counter" for hierarchy "block_v1:instance_block_v1|counter:acq_cnt_read" File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/block_v1.vhd Line: 118
 Info (12128): Elaborating entity "control_unit" for hierarchy "block_v1:instance_block_v1|control_unit:ctr_unit" File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/block_v1.vhd Line: 133
-Info (12128): Elaborating entity "DAC" for hierarchy "DAC:instance_DAC" File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/DEONANOSon.vhd Line: 155
+Info (12128): Elaborating entity "DAC" for hierarchy "DAC:instance_DAC" File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/DEONANOSon.vhd Line: 147
 Info (284007): State machine "|de0nanoson|block_v1:instance_block_v1|control_unit:ctr_unit|state" will be implemented as a safe state machine. File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/control_unit.vhd Line: 38
 Info (19000): Inferred 2 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "block_v1:instance_block_v1|ram_sync:out_ram|ram_rtl_0" 
@@ -918,9 +917,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/deco
     Info (12023): Found entity 1: decode_dla File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/db/decode_dla.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_8hb.tdf
     Info (12023): Found entity 1: mux_8hb File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/db/mux_8hb.tdf Line: 23
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "start_trait" is stuck at VCC File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/DEONANOSon.vhd Line: 30
-    Warning (13410): Pin "fin_trait" is stuck at VCC File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/DEONANOSon.vhd Line: 31
 Info (286030): Timing-Driven Synthesis is running
 Critical Warning (18061): Ignored Power-Up Level option on the following registers
     Critical Warning (18010): Register DAC:instance_DAC|data_tx[0] will power up to Low File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/DAC.vhd Line: 106
@@ -934,17 +930,18 @@ Critical Warning (18061): Ignored Power-Up Level option on the following registe
     Critical Warning (18010): Register DAC:instance_DAC|data_tx[10] will power up to Low File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/DAC.vhd Line: 106
     Critical Warning (18010): Register DAC:instance_DAC|data_tx[9] will power up to Low File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/DAC.vhd Line: 106
     Critical Warning (18010): Register DAC:instance_DAC|data_tx[8] will power up to Low File: /home/doune/Documents/ENSSAT/vhdl/DAC_restored/DAC.vhd Line: 106
+Info (17049): 2 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 639 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 631 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 6 input pins
-    Info (21059): Implemented 12 output pins
+    Info (21059): Implemented 10 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 427 logic cells
+    Info (21061): Implemented 421 logic cells
     Info (21064): Implemented 192 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 15 warnings
-    Info: Peak virtual memory: 1123 megabytes
-    Info: Processing ended: Sun May 10 00:52:29 2020
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 12 warnings
+    Info: Peak virtual memory: 1118 megabytes
+    Info: Processing ended: Mon May 11 15:54:12 2020
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:18
 

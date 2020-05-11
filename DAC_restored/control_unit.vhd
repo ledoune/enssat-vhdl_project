@@ -33,7 +33,7 @@ end control_unit;
 architecture logic of control_unit is
     type state_type is (rdy, acq, trt, res, rst, async_rst);
     attribute syn_encoding : string;
-    attribute syn_encoding of state_type : type is "safe";
+    attribute syn_encoding of state_type : type is "sequential, safe";
 
     signal state : state_type;
 
@@ -73,7 +73,7 @@ begin
                     else
                         -- s_sample_stop   <= acq_cnt_write_value;
                         -- s_sample_stop   <= (others => '1');
-                        state           <= rst;
+                        state <= rst;
                     end if;
 
                 when trt =>

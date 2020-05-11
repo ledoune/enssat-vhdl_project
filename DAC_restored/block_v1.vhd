@@ -144,9 +144,31 @@ begin
         s_uc_cnt_enables
     );
 
+--    -- debug thingy : turns on a led if button_rst goes to 0 due to another button
+--    process (button_res, button_acq, button_rst) 
+--        variable pressed : std_logic;
+--    begin
+--        if (button_res = '0') then
+--            pressed := '0';
+--            led_signals <= "0000";
+--        end if;
+--        if (button_acq = '0') then
+--            led_signals(3) <= '1';
+--            pressed := '1';
+--        else 
+--            led_signals(3) <= '0';
+--        end if;
+--        if (button_rst = '0' and pressed = '1') then
+--            led_signals(0) <= '1';
+--        elsif (button_rst = '0') then
+--            led_signals(1) <= '1';
+--        else
+--            led_signals(1) <= '0';
+--        end if;
+--    end process;
     led_signals <= s_uc_cnt_enables;
-    -- led_signals <= std_logic_vector(s_uc_cnt_sample_stop(13 downto 10));
-    -- led_signals <= std_logic_vector(s_acq_write(13 downto 10));
+--    led_signals <= std_logic_vector(s_uc_cnt_sample_stop(13 downto 10));
+--    led_signals <= std_logic_vector(s_acq_write(13 downto 10));
 
     process (clk, button_rst)
         variable cycle_enable : integer range 0 to 39;              -- number of cycles at 400kHz

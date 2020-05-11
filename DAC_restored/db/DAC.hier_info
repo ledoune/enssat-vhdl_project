@@ -9,8 +9,6 @@ ADC_SDO => ADC2:instance_ADC2.ADC_SDO
 ECHANTE << ADC2:instance_ADC2.ECHANT
 ECHANTS << ADC2:instance_ADC2.measure_done
 measure_done << ADC2:instance_ADC2.measure_done
-start_trait << <VCC>
-fin_trait << <VCC>
 button_rst => ADC2:instance_ADC2.rstb
 button_rst => block_v1:instance_block_v1.button_rst
 button_rst => DAC:instance_DAC.reset_n

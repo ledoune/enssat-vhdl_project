@@ -60,11 +60,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "button_trt",
+					"name" : "button_acq",
 					"strict" : false
 				},
 				{
-					"name" : "button_acq",
+					"name" : "button_trt",
 					"strict" : false
 				},
 				{

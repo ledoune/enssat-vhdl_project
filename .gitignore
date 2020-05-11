@@ -40,10 +40,10 @@
 # software binary files
 
 /*
-!DAC_restored
-!work
-!LICENSE
-!README.md
+!/DAC_restored
+!/work
+!/LICENSE
+!/README.md
 !/*.gitignore
 ##
 !**/*.qpf
@@ -59,6 +59,6 @@
 !**/*.sof
 ## tbd
 
-!*.tcl
+!**/*.tcl
 
 # End of https://www.gitignore.io/api/alteraquartusii
