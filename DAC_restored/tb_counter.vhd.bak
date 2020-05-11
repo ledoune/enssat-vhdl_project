@@ -1,0 +1,64 @@
+library IEEE;
+
+use IEEE.std_logic_1164.all;
+use IEEE.std_logic_unsigned.all;
+
+entity tb_counter is
+end tb_counter;
+
+architecture behavior of tb_counter is
+    component counter
+        generic (
+            max : integer := 63
+        );
+        port (
+            clk                     : in std_logic;
+
+            reset                   : in std_logic;
+            enable                  : in std_logic;
+            output                  : out unsigned;
+        );
+    end component;
+
+    constant clk_period :           time := 20 ns;
+
+    signal clk                      : std_logic;
+
+    signal reset                    : std_logic;
+    signal enable                   : std_logic;
+    signal output                   : unsigned;
+begin
+    cnt : counter port map (
+            clk,
+            reset,
+            enable,
+            output
+    );
+
+    clk_proc : process
+    begin
+        clk <= '0';
+        wait for clk_period / 2;
+        clk <= '1';
+        wait for clk_period / 2;
+    end process;
+
+    test_proc : process
+    begin
+        enable <= '1'
+        wait for 100 ns;
+        
+        reset <= '1';
+        wait for 100 ns;
+        
+        reset <= '0';
+        wait for 100 ns;
+
+        enable <= '0';
+        wait for 100 ns;
+
+        wait;
+    end process;
+end;
+
+

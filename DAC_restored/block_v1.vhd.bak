@@ -1,0 +1,199 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+entity block_v1 is
+    generic(
+        ram_address_size    : integer := 6;
+        ram_data_size       : integer := 12;
+        counter_min_value   : integer := 0;
+        counter_max_value   : integer := 2**ram_address_size - 1
+    );
+    port (
+        clk                 : in std_logic;
+
+        mesure_done         : in std_logic;
+        dac_enable          : out std_logic;
+
+        data_in             : in std_logic_vector;
+        data_out            : out std_logic_vector;
+
+        led_acq_cnt_read    : out std_logic;
+        led_acq_cnt_write   : out std_logic;
+        led_out_cnt_read    : out std_logic;
+        led_out_cnt_write   : out std_logic;
+
+        button_rst          : in std_logic;
+        button_acq          : in std_logic;
+        button_trt          : in std_logic;
+        button_out          : in std_logic
+    );
+
+end block_v1;
+
+architecture struct of block_v1 is
+    -- acquisition ram and associated counters
+    component acq_ram is
+        generic (
+            address_size    : integer := ram_address_size;
+            data_size       : integer := ram_data_size
+        );
+        port (
+            clk             : in std_logic;
+            write_enable    : in std_logic;
+            read_address    : in unsigned;
+            write_address   : in unsigned;
+            data_in         : in std_logic_vector;
+            data_out        : out std_logic_vector
+        );
+    end component acq_ram;
+
+    component acq_cnt_read is
+        generic (
+            min             : integer := counter_min_value;
+            max             : integer := counter_max_value
+        );
+        port (
+            clk             : in std_logic;
+            reset           : in std_logic;
+            enable          : in std_logic;
+            output          : out unsigned
+        );
+    end component acq_cnt_read;
+
+    component acq_cnt_write is
+        generic (
+            min             : integer := counter_min_value;
+            max             : integer := counter_max_value
+        );
+        port (
+            clk             : in std_logic;
+            reset           : in std_logic;
+            enable          : in std_logic;
+            output          : out unsigned
+        );
+    end component acq_cnt_write;
+    
+    -- output ram and associated counters
+    component out_ram is
+        generic (
+            address_size    : integer := ram_address_size;
+            data_size       : integer := ram_data_size
+        );
+        port (
+            clk             : in std_logic;
+            write_enable    : in std_logic;
+            read_address    : in unsigned;
+            write_address   : in unsigned;
+            data_in         : in std_logic_vector;
+            data_out        : out std_logic_vector
+        );
+    end component out_ram;
+
+    component out_cnt_read is
+        generic (
+            min             : integer := counter_min_value;
+            max             : integer := counter_max_value
+        );
+        port (
+            clk             : in std_logic;
+            reset           : in std_logic;
+            enable          : in std_logic;
+            output          : out unsigned
+        );
+    end component out_cnt_read;
+
+    component out_cnt_write is
+        generic (
+            min             : integer := counter_min_value;
+            max             : integer := counter_max_value
+        );
+        port (
+            clk             : in std_logic;
+            reset           : in std_logic;
+            enable          : in std_logic;
+            output          : out unsigned
+        );
+    end component out_cnt_write;
+
+    component control_unit is
+        port (
+            clk                     : in std_logic;
+
+            button_rst              : in std_logic;
+            button_acq              : in std_logic;
+            button_trt              : in std_logic;
+            button_out              : in std_logic;
+
+            acq_ram_write_enable    : out std_logic;
+            acq_cnt_read_reset      : out std_logic;
+            acq_cnt_read_enable     : out std_logic;
+            acq_cnt_read_led        : out std_logic;
+            acq_cnt_write_reset     : out std_logic;
+            acq_cnt_write_enable    : out std_logic;
+            acq_cnt_write_led       : out std_logic;
+
+            out_ram_write_enable    : out std_logic;
+            out_cnt_read_reset      : out std_logic;
+            out_cnt_read_enable     : out std_logic;
+            out_cnt_read_led        : out std_logic;
+            out_cnt_write_reset     : out std_logic;
+            out_cnt_write_enable    : out std_logic;
+            out_cnt_write_led       : out std_logic
+        );
+    end component control_unit;
+
+-- signals between components
+    -- command signals from uc
+    signal s_uc_acq_ram_write_enable    : std_logic;
+    signal s_uc_acq_cnt_read_enable     : std_logic;
+    signal s_uc_acq_cnt_read_reset      : std_logic;
+    signal s_uc_acq_cnt_write_enable    : std_logic;
+    signal s_uc_acq_cnt_write_reset     : std_logic;
+
+    signal s_uc_out_ram_write_enable    : std_logic;
+    signal s_uc_out_cnt_read_enable     : std_logic;
+    signal s_uc_out_cnt_read_reset      : std_logic;
+    signal s_uc_out_cnt_write_enable    : std_logic;
+    signal s_uc_out_cnt_write_reset     : std_logic;
+
+
+    -- data signals
+    signal s_acq_write      : unsigned;
+    signal s_acq_read       : unsigned;
+
+    signal s_out_read       : unsigned;
+    signal s_out_write      : unsigned;
+
+    signal s_data           : std_logic_vector;
+
+begin 
+    inst_acq_ram : acq_ram port map (clk, s_uc_acq_ram_write_enable, s_acq_read, s_acq_write, data_in, s_data);
+    inst_acq_cnt_read : acq_cnt_read port map (clk, s_uc_acq_cnt_read_reset, s_uc_acq_cnt_read_enable, s_acq_read);
+    inst_acq_cnt_write : acq_cnt_write port map (clk, s_uc_acq_cnt_write_reset, s_uc_acq_cnt_write_enable, s_acq_write);
+
+    inst_out_ram : out_ram port map (clk, s_uc_out_ram_write_enable, s_out_read, s_out_write, s_data, data_out);
+    inst_out_cnt_read : out_cnt_read port map (clk, s_uc_out_cnt_read_reset, s_uc_out_cnt_read_enable, s_out_read);
+    inst_out_cnt_write : out_cnt_write port map (clk, s_uc_out_cnt_write_reset, s_uc_out_cnt_write_enable, s_out_write);
+
+    inst_ctr_unit : control_unit port map (
+        clk, button_rst, button_acq, button_trt, button_out,
+        s_uc_acq_ram_write_enable,
+        s_uc_acq_cnt_read_reset,
+        s_uc_acq_cnt_read_enable,
+        led_acq_cnt_read,
+        s_uc_acq_cnt_write_reset,
+        s_uc_acq_cnt_write_enable,
+        led_acq_cnt_write,
+        s_uc_out_ram_write_enable,
+        s_uc_out_cnt_read_reset,
+        s_uc_out_cnt_read_enable,
+        led_out_cnt_read,
+        s_uc_out_cnt_write_reset,
+        s_uc_out_cnt_write_enable,
+        led_out_cnt_write
+    );
+
+    dac_enable <= '1';
+
+end struct;

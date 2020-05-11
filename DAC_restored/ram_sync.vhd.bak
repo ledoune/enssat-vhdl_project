@@ -1,0 +1,39 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+entity ram_sync is
+--    generic (
+--        address_length :  integer;
+--        data_range :      integer
+--    );
+    port (
+        clk :            in std_logic;
+        write_enable :   in std_logic;
+        read_address :   in std_logic_vector;
+        write_address :  in std_logic_vector;
+        data_in :        in std_logic_vector;
+        data_out :       out std_logic_vector
+    );
+end entity ram_sync;
+
+architecture RTL of ram_async is
+--    type ram_type is array (0 to 2**address_length - 1) of std_logic_vector(data_range);
+    type ram_type is array (read_address'range) of std_logic_vector (data_in'range);
+    signal ram : ram_type;
+--    signal rd_address : std_logic_vector(address_length);
+--    signal wr_address : std_logic_vector(address_length);
+
+begin
+    ram_sync_proc : process(clk)
+    begin
+        if rising_edge(clk) then
+            if (write_enable = '1') then
+                ram(to_integer(unsigned(write_address))) <= data_in;
+            end if;
+        end if;
+    end process;
+
+    data_out <= ram(to_integer(unsigned(read_address)));
+
+end RTL;
