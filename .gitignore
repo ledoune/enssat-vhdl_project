@@ -40,19 +40,21 @@
 # software binary files
 
 /*
+!DAC_restored
+!work
 !/*.gitignore
 ##
-!*.qpf
-!*.qsf
-!*.qws
-!*.bdf
-!*.vhd
-!*.v
-!*.ptf
-!*.bsf
+!**/*.qpf
+!**/*.qsf
+!**/*.qws
+!**/*.bdf
+!**/*.vhd
+!**/*.v
+!**/*.ptf
+!**/*.bsf
 !**/class.ptf
-!*.tbd
-!*.sof
+!**/*.tbd
+!**/*.sof
 ## tbd
 
 !*.tcl

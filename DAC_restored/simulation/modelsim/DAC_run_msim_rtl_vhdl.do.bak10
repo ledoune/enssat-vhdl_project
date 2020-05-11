@@ -1,0 +1,17 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vcom -93 -work work {D:/Users/DouNe/Documents/Cours/VHDL/DAC_restored/ram_sync.vhd}
+
+vcom -93 -work work {D:/Users/DouNe/Documents/Cours/VHDL/DAC_restored/tb_ram.vhd}
+
+vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  tb_ram
+
+add wave *
+view structure
+view signals
+run -all
