@@ -40,7 +40,10 @@
 # software binary files
 
 /*
+!*.qar
+!*.qarlog
 !/DAC_restored
+/DAC_restored/*
 !/work
 !/LICENSE
 !/README.md
