@@ -71,8 +71,15 @@ begin
         clk <= '1';
         wait for clk_period / 2;
     end process;
-    
-    measure_done <= '1';
+
+    measure_proc : process
+    begin
+        measure_done <= '0';
+        wait for 50 us;
+        measure_done <= '1';
+        wait for 50 us;
+    end process;
+
     data_in <= (others => '1');
 
     test_proc : process
@@ -82,13 +89,13 @@ begin
         button_trt <= '1';
         button_res <= '1';
         wait for 10 ms;
-        
+
         button_rst <= '1';
         button_acq <= '1';
         button_trt <= '1';
         button_res <= '1';
         wait for 10 ms;
-        
+
         button_rst <= '1';
         button_acq <= '0';
         button_trt <= '1';
@@ -100,7 +107,7 @@ begin
         button_trt <= '1';
         button_res <= '1';
         wait for 10 ms;
-        
+
         button_rst <= '1';
         button_acq <= '1';
         button_trt <= '0';
@@ -112,7 +119,7 @@ begin
         button_trt <= '1';
         button_res <= '1';
         wait for 100 ms;
-        
+
         button_rst <= '1';
         button_acq <= '1';
         button_trt <= '1';

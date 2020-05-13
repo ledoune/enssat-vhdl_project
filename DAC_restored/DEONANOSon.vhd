@@ -15,6 +15,7 @@ entity de0nanoson is
         ram_data_size       : integer := 12;
 --        counter_min_value   : integer := 0;
         counter_max_value   : integer := 2**16 - 1;
+    -- frequencies shouldn't be changed without changing ram clocks
         freq_ADC_DAC        : integer := 10_000;
         freq_trt            : integer := 10_000
     );
@@ -114,7 +115,7 @@ begin
     instance_ADC2 : ADC2 port map (button_rst,clk,"000",smeasure_done,sdataADC,ADC_CONVST,ADC_SCK,ADC_SDI,ADC_SDO,ECHANTE);
 
     -- debug thingy : turns on a led if button_rst goes to 0 due to another button
---    process (button_res, button_acq, button_rst) 
+--    process (button_res, button_acq, button_rst)
 --        variable pressed : std_logic;
 --    begin
 --        if (button_res = '0') then
@@ -124,7 +125,7 @@ begin
 --        if (button_acq = '0') then
 --            led_out_cnt_write <= '1';
 --            pressed := '1';
---        else 
+--        else
 --            led_out_cnt_write <= '0';
 --        end if;
 --        if (button_rst = '0' and pressed = '1') then

@@ -11,7 +11,9 @@ architecture behavior of tb_deonanoson is
         generic(
             ram_address_size    : integer := 6;
             ram_data_size       : integer := 12;
-            counter_max_value   : integer := 2**6 - 1
+            counter_max_value   : integer := 2**6 - 1;
+            freq_ADC_DAC        : integer := 10_000;
+            freq_trt            : integer := 10_000
         );
         port (
             clk             : in std_logic;
@@ -21,8 +23,8 @@ architecture behavior of tb_deonanoson is
             ADC_SDO	        : in std_logic;         -- data output SDO SPI (envoie la valeur numérique bit par bit)
             ECHANTE         : out std_logic;        -- impulsion = start la conversion entrée pour observation
             ECHANTS         : out std_logic;        -- impulsion = start la conversion en sortie pour observation
-            measure_done    : out std_logic;        -- indique si la conversion est finie
-            start_trait     : out std_logic;        -- pour observation
+            -- measure_done    : out std_logic;        -- indique si la conversion est finie
+            -- start_trait     : out std_logic;        -- pour observation
             fin_trait       : out std_logic;        -- pour observation
             button_rst      : in std_logic;         -- active low reset
             SCL             : inout std_logic;      -- bus I2C vers CNA
@@ -52,8 +54,8 @@ architecture behavior of tb_deonanoson is
     signal ECHANTE              : std_logic;        -- impulsion = start la conversion entrée pour observation
     signal ECHANTS              : std_logic;        -- impulsion = start la conversion en sortie pour observation
     signal measure_done         : std_logic;        -- indique si la conversion est finie
-    signal start_trait          : std_logic;        -- pour observation
-    signal fin_trait            : std_logic;        -- pour observation
+    -- signal start_trait          : std_logic;        -- pour observation
+    -- signal fin_trait            : std_logic;        -- pour observation
     signal button_rst           : std_logic;         -- active low reset
     signal SCL                  : std_logic;      -- bus I2C vers CNA
     signal SDA                  : std_logic;      -- bus I2C vers CNA
@@ -81,8 +83,8 @@ begin
         ECHANTS,
         measure_done,
         start_trait,
-        fin_trait,
-        button_rst,
+        -- fin_trait,
+        -- button_rst,
         SCL,
         SDA,
 --        SCLcopie,
@@ -104,6 +106,14 @@ begin
         wait for clk_period / 2;
         clk <= '1';
         wait for clk_period / 2;
+    end process;
+
+    measure_proc : process
+    begin
+        measure_done <= '0';
+        wait for 50 us;
+        measure_done <= '1';
+        wait for 50 us;
     end process;
 
     test_proc : process

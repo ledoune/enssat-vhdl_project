@@ -102,6 +102,8 @@ architecture struct of block_v1 is
     signal s_uc_cnt_sample_start        : unsigned(ram_address_size - 1 downto 0);
     signal s_uc_cnt_sample_stop         : unsigned(ram_address_size - 1 downto 0);
 
+    -- inversed clock (shouldn't be done in any real project) signal needed for simulation
+    signal inv_clk          : std_logic;
     -- data signals
     signal s_acq_write      : unsigned(ram_address_size - 1 downto 0);
     signal s_acq_read       : unsigned(ram_address_size - 1 downto 0);
@@ -114,7 +116,9 @@ architecture struct of block_v1 is
     constant acq_write_max  : unsigned(ram_address_size - 1 downto 0) := (others => '1'); -- ALED TELLEMENT DE TEMPS PERDU A TROUVER QUE JE SUIS CON
     constant divider : integer := (50_000_000 / 400_000);
 begin
-    acq_ram : ram_sync port map (clk, s_uc_acq_ram_write_enable, s_acq_read, s_acq_write, data_in, s_data);
+    inv_clk <= not measure_done;
+
+    acq_ram : ram_sync port map (inv_clk, s_uc_acq_ram_write_enable, s_acq_read, s_acq_write, data_in, s_data);
     acq_cnt_read : counter
         generic map(freq_trt, counter_max_value)
         port map (clk, s_uc_cnt_resets(0), s_uc_cnt_enables(0), s_uc_cnt_sample_start, s_uc_cnt_sample_stop, s_acq_read);
@@ -122,7 +126,7 @@ begin
         generic map(freq_ADC_DAC, counter_max_value)
         port map (clk, s_uc_cnt_resets(1), s_uc_cnt_enables(1), s_uc_cnt_sample_start, acq_write_max, s_acq_write);
 
-    out_ram : ram_sync port map (clk, s_uc_out_ram_write_enable, s_out_read, s_out_write, s_data, data_out);
+    out_ram : ram_sync port map (inv_clk, s_uc_out_ram_write_enable, s_out_read, s_out_write, s_data, data_out);
     out_cnt_read : counter
         generic map (freq_ADC_DAC, counter_max_value)
         port map (clk, s_uc_cnt_resets(2), s_uc_cnt_enables(2), s_uc_cnt_sample_start, s_uc_cnt_sample_stop, s_out_read);
@@ -145,7 +149,7 @@ begin
     );
 
 --    -- debug thingy : turns on a led if button_rst goes to 0 due to another button
---    process (button_res, button_acq, button_rst) 
+--    process (button_res, button_acq, button_rst)
 --        variable pressed : std_logic;
 --    begin
 --        if (button_res = '0') then
@@ -155,7 +159,7 @@ begin
 --        if (button_acq = '0') then
 --            led_signals(3) <= '1';
 --            pressed := '1';
---        else 
+--        else
 --            led_signals(3) <= '0';
 --        end if;
 --        if (button_rst = '0' and pressed = '1') then
