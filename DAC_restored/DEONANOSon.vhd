@@ -11,8 +11,8 @@ use work.son.all;
 
 entity de0nanoson is
     generic (
-        ram_address_size    : integer := 16;
-        ram_data_size       : integer := 12;
+        ram_address_width    : integer := 16;
+        ram_data_width       : integer := 12;
 --        counter_min_value   : integer := 0;
         counter_max_value   : integer := 2**16 - 1;
     -- frequencies shouldn't be changed without changing ram clocks
@@ -79,8 +79,8 @@ end component DAC;
 
 component block_v1 is
     generic (
-        ram_address_size    : integer := ram_address_size;
-        ram_data_size       : integer := ram_data_size;
+        ram_address_width    : integer := ram_address_width;
+        ram_data_width       : integer := ram_data_width;
 --        counter_min_value   : integer := counter_min_value;
         counter_max_value   : integer := counter_max_value;
         freq_ADC_DAC        : integer := freq_ADC_DAC;
@@ -103,6 +103,33 @@ component block_v1 is
         button_res          : in std_logic
     );
 end component block_v1;
+
+component block_v2 is
+    generic (
+        ram_address_width    : integer := ram_address_width;
+        ram_data_width       : integer := ram_data_width;
+--        counter_min_value   : integer := counter_min_value;
+        counter_max_value   : integer := counter_max_value;
+        freq_ADC_DAC        : integer := freq_ADC_DAC;
+        freq_trt            : integer := freq_trt
+    );
+    port (
+        clk                 : in std_logic;
+
+        measure_done         : in std_logic;
+        dac_enable              : out std_logic;
+
+        data_in             : in std_logic_vector;
+        data_out            : out std_logic_vector;
+
+        led_signals         : out std_logic_vector(0 to 3);
+
+        button_rst          : in std_logic;
+        button_acq          : in std_logic;
+        button_trt          : in std_logic;
+        button_res          : in std_logic
+    );
+end component block_v2;
 
 signal smeasure_done    : std_logic;
 signal s_dac_enable     : std_logic;
@@ -137,7 +164,10 @@ begin
 --        end if;
 --    end process;
 
-    instance_block_v1 : block_v1 port map (clk, smeasure_done, s_dac_enable, sdataADC, sdataDAC, leds,
+--    instance_block_v1 : block_v1 port map (clk, smeasure_done, s_dac_enable, sdataADC, sdataDAC, leds,
+--                                           button_rst, button_acq, button_trt, button_res);
+
+    instance_block_v2 : block_v2 port map (clk, smeasure_done, s_dac_enable, sdataADC, sdataDAC, leds,
                                            button_rst, button_acq, button_trt, button_res);
   -- leds
     led_acq_cnt_read    <= leds(0);

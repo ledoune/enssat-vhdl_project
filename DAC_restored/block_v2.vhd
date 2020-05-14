@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity block_v1 is
+entity block_v2 is
     generic(
         ram_address_width    : integer := 6;
         ram_data_width       : integer := 12;
@@ -28,9 +28,9 @@ entity block_v1 is
         button_res          : in std_logic
     );
 
-end block_v1;
+end block_v2;
 
-architecture struct of block_v1 is
+architecture struct of block_v2 is
     -- acquisition ram and associated counters
     component ram_sync is
         generic (
@@ -92,6 +92,18 @@ architecture struct of block_v1 is
         );
     end component control_unit;
 
+    component fir is 
+        generic (
+            data_width : integer := ram_data_width
+        );
+        port (
+            clk : in std_logic;
+            rst : in std_logic;
+            data_in : in std_logic_vector;
+            data_out: out std_logic_vector
+        );
+    end component fir;
+
 -- signals between components
     -- command signals from uc
     signal s_uc_acq_ram_write_enable    : std_logic;
@@ -111,14 +123,15 @@ architecture struct of block_v1 is
     signal s_out_read       : unsigned(ram_address_width - 1 downto 0);
     signal s_out_write      : unsigned(ram_address_width - 1 downto 0);
 
-    signal s_data           : std_logic_vector(ram_data_width - 1 downto 0);
+    signal s_acq_ram_out    : std_logic_vector(ram_data_width - 1 downto 0);
+    signal s_fir_out        : std_logic_vector(ram_data_width - 1 downto 0);
 
     constant acq_write_max  : unsigned(ram_address_width - 1 downto 0) := (others => '1'); -- ALED TELLEMENT DE TEMPS PERDU A TROUVER QUE JE SUIS CON
     constant divider : integer := (50_000_000 / 400_000);
 begin
     inv_clk <= not measure_done;
 
-    acq_ram : ram_sync port map (inv_clk, s_uc_acq_ram_write_enable, s_acq_read, s_acq_write, data_in, s_data);
+    acq_ram : ram_sync port map (inv_clk, s_uc_acq_ram_write_enable, s_acq_read, s_acq_write, data_in, s_acq_ram_out);
     acq_cnt_read : counter
         generic map(freq_trt, counter_max_value)
         port map (clk, s_uc_cnt_resets(0), s_uc_cnt_enables(0), s_uc_cnt_sample_start, s_uc_cnt_sample_stop, s_acq_read);
@@ -126,7 +139,7 @@ begin
         generic map(freq_ADC_DAC, counter_max_value)
         port map (clk, s_uc_cnt_resets(1), s_uc_cnt_enables(1), s_uc_cnt_sample_start, acq_write_max, s_acq_write);
 
-    out_ram : ram_sync port map (inv_clk, s_uc_out_ram_write_enable, s_out_read, s_out_write, s_data, data_out);
+    out_ram : ram_sync port map (inv_clk, s_uc_out_ram_write_enable, s_out_read, s_out_write, s_fir_out, data_out);
     out_cnt_read : counter
         generic map (freq_ADC_DAC, counter_max_value)
         port map (clk, s_uc_cnt_resets(2), s_uc_cnt_enables(2), s_uc_cnt_sample_start, s_uc_cnt_sample_stop, s_out_read);
@@ -146,6 +159,10 @@ begin
         s_uc_out_ram_write_enable,
         s_uc_cnt_resets,
         s_uc_cnt_enables
+    );
+
+    low_fir : fir port map (
+        measure_done, button_rst, s_acq_ram_out, s_fir_out
     );
 
 --    -- debug thingy : turns on a led if button_rst goes to 0 due to another button

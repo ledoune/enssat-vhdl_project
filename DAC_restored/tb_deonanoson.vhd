@@ -9,8 +9,8 @@ end tb_deonanoson;
 architecture behavior of tb_deonanoson is
     component de0nanoson
         generic(
-            ram_address_size    : integer := 6;
-            ram_data_size       : integer := 12;
+            ram_address_width    : integer := 6;
+            ram_data_width       : integer := 12;
             counter_max_value   : integer := 2**6 - 1;
             freq_ADC_DAC        : integer := 10_000;
             freq_trt            : integer := 10_000

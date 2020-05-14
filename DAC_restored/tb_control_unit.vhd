@@ -10,7 +10,7 @@ end tb_control_unit;
 architecture behavior of tb_control_unit is
     component control_unit
         generic (
-            ram_address_size : integer := 16
+            ram_address_width : integer := 16
         );
         port (
             clk                     : in std_logic;
@@ -20,13 +20,13 @@ architecture behavior of tb_control_unit is
             button_trt              : in std_logic;
             button_out              : in std_logic;
 
-            acq_cnt_read_value      : in unsigned(ram_address_size - 1 downto 0);
-            acq_cnt_write_value     : in unsigned(ram_address_size - 1 downto 0);
-            out_cnt_read_value      : in unsigned(ram_address_size - 1 downto 0);
-            out_cnt_write_value     : in unsigned(ram_address_size - 1 downto 0);
+            acq_cnt_read_value      : in unsigned(ram_address_width - 1 downto 0);
+            acq_cnt_write_value     : in unsigned(ram_address_width - 1 downto 0);
+            out_cnt_read_value      : in unsigned(ram_address_width - 1 downto 0);
+            out_cnt_write_value     : in unsigned(ram_address_width - 1 downto 0);
 
-            sample_start            : out unsigned(ram_address_size - 1 downto 0);
-            sample_stop             : out unsigned(ram_address_size - 1 downto 0);
+            sample_start            : out unsigned(ram_address_width - 1 downto 0);
+            sample_stop             : out unsigned(ram_address_width - 1 downto 0);
         
             acq_ram_write_enable    : out std_logic;
             out_ram_write_enable    : out std_logic;
@@ -51,13 +51,13 @@ architecture behavior of tb_control_unit is
     signal cnt_reset_signals        : std_logic_vector(0 to 3);
     signal cnt_enable_signals       : std_logic_vector(0 to 3);
 
-    signal sample_start : unsigned(ram_address_size - 1 downto 0);
-    signal sample_stop : unsigned(ram_address_size - 1 downto 0);
+    signal sample_start : unsigned(ram_address_width - 1 downto 0);
+    signal sample_stop : unsigned(ram_address_width - 1 downto 0);
 
-    signal acq_cnt_read_value : unsigned(ram_address_size - 1 downto 0);
-    signal acq_cnt_write_value : unsigned(ram_address_size - 1 downto 0);
-    signal out_cnt_read_value : unsigned(ram_address_size - 1 downto 0);
-    signal out_cnt_write_value : unsigned(ram_address_size - 1 downto 0);
+    signal acq_cnt_read_value : unsigned(ram_address_width - 1 downto 0);
+    signal acq_cnt_write_value : unsigned(ram_address_width - 1 downto 0);
+    signal out_cnt_read_value : unsigned(ram_address_width - 1 downto 0);
+    signal out_cnt_write_value : unsigned(ram_address_width - 1 downto 0);
 begin
     ctr_unit : control_unit port map (
             clk,

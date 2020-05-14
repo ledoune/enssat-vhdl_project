@@ -385,3 +385,44 @@ R12
 !i113 1
 R15
 R16
+Etb_resize
+Z56 w1589447774
+R1
+R5
+R6
+Z57 d/home/doune/Documents/ENSSAT/vhdl
+Z58 8/home/doune/Documents/ENSSAT/vhdl/DAC_restored/tb_resize.vhd
+Z59 F/home/doune/Documents/ENSSAT/vhdl/DAC_restored/tb_resize.vhd
+l0
+L5
+V<lcgYT:oZ0WHRJ5UJ`D571
+!s100 JLiO]k?QE^X^XEe5`D0TR1
+R10
+32
+Z60 !s110 1589447777
+!i10b 1
+Z61 !s108 1589447777.000000
+Z62 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/doune/Documents/ENSSAT/vhdl/DAC_restored/tb_resize.vhd|
+Z63 !s107 /home/doune/Documents/ENSSAT/vhdl/DAC_restored/tb_resize.vhd|
+!i113 1
+R15
+R16
+Abehavior
+R1
+R5
+R6
+Z64 DEx4 work 9 tb_resize 0 22 <lcgYT:oZ0WHRJ5UJ`D571
+l13
+L8
+VFUSQ=c4PJFz[oTAA1<;7A2
+!s100 eJ20il1kc5423^5z;VfZa0
+R10
+32
+R60
+!i10b 1
+R61
+R62
+R63
+!i113 1
+R15
+R16

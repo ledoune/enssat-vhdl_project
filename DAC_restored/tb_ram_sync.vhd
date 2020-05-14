@@ -5,16 +5,16 @@ use IEEE.std_logic_unsigned.all;
 
 entity tb_ram_sync is
     generic (
-        address_size :              integer := 6;
-        data_size :                 integer := 12
+        address_width :              integer := 6;
+        data_width :                 integer := 12
     );
 end tb_ram_sync;
 
 architecture behavior of tb_ram_sync is
 --    component ram_async
 --        generic (
---            address_size :          integer := address_size;
---            data_size :             integer := data_size
+--            address_width :          integer := address_width;
+--            data_width :             integer := data_width
 --        );
 --        port (
 --            write_enable :          in std_logic;
@@ -28,8 +28,8 @@ architecture behavior of tb_ram_sync is
 
     component ram_sync
         generic (
-            address_size :          integer := address_size;
-            data_size :             integer := data_size
+            address_width :          integer := address_width;
+            data_width :             integer := data_width
         );
         port (
             clk :                   in std_logic;
@@ -45,15 +45,15 @@ architecture behavior of tb_ram_sync is
 
     signal clk :                    std_logic;
     signal write_enable :           std_logic;
-    signal read_address :           std_logic_vector(address_size - 1 downto 0) := (others => '0');
-    signal write_address :          std_logic_vector(address_size - 1 downto 0) := (others => '0');
-    signal data_in :                std_logic_vector(data_size - 1 downto 0) := (others => '0');
+    signal read_address :           std_logic_vector(address_width - 1 downto 0) := (others => '0');
+    signal write_address :          std_logic_vector(address_width - 1 downto 0) := (others => '0');
+    signal data_in :                std_logic_vector(data_width - 1 downto 0) := (others => '0');
 
-    signal data_out :               std_logic_vector(data_size - 1 downto 0);
+    signal data_out :               std_logic_vector(data_width - 1 downto 0);
 
 begin
 --    async : ram_async 
---    generic map (address_size => address_size, data_size => data_size)
+--    generic map (address_width => address_width, data_width => data_width)
 --    port map (
 --        write_enable => write_enable,
 --        read_address => read_address,
@@ -63,7 +63,7 @@ begin
 --    );
 
     sync : ram_sync 
-    generic map (address_size => address_size, data_size => data_size)
+    generic map (address_width => address_width, data_width => data_width)
     port map (
         clk => clk,
         write_enable => write_enable,

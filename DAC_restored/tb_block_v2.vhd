@@ -3,11 +3,11 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity tb_block_v1 is
-end tb_block_v1;
+entity tb_block_v2 is
+end tb_block_v2;
 
-architecture behavior of tb_block_v1 is
-    component block_v1
+architecture behavior of tb_block_v2 is
+    component block_v2
         generic(
             ram_address_width    : integer := 16;
             ram_data_width       : integer := 12;
@@ -51,7 +51,7 @@ architecture behavior of tb_block_v1 is
     signal button_res               : std_logic := '1';
 
 begin
-    v1 : block_v1 port map (
+    v2 : block_v2 port map (
             clk,
             measure_done,
             dac_enable,
