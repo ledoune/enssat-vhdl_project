@@ -1,0 +1,35 @@
+Quartus Prime Archive log --	/home/doune/Documents/ENSSAT/vhdl/vhdl_pierre_denes_v2.qarlog
+
+Archive:	/home/doune/Documents/ENSSAT/vhdl/vhdl_pierre_denes_v2.qar
+Date:		Thu May 14 18:32:22 2020
+Quartus Prime		19.1.0 Build 670 09/22/2019 SJ Lite Edition
+
+	=========== Files Selected: ===========
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/ADC2.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/DAC.qpf
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/DAC.qsf
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/DAC.sdc
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/DAC.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/DAC_assignment_defaults.qdf
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/DEONANOSon.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/assignment_defaults.qdf
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/block_v1.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/block_v2.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/control_unit.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/counter.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/dflipflop.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/fir.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/pack_son.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/ram_async.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/ram_sync.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/tb_block_v1.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/tb_block_v2.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/tb_control_unit.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/tb_counter.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/tb_deonanoson.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/tb_fir.vhd
+/home/doune/Documents/ENSSAT/vhdl/DAC_restored/tb_ram_sync.vhd
+	======= Total: 24 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
